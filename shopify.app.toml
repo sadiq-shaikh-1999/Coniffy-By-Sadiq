@@ -1,3 +1,27 @@
-# This file stores configurations for your Shopify app.
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-scopes = "write_products"
+name = "Conify By Sadiq"
+client_id = "84e81327eb0b48b2f8040379170f3e6c"
+application_url = "https://workers-highlighted-berry-babe.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products,write_themes,read_themes"
+
+[auth]
+redirect_urls = [
+  "https://workers-highlighted-berry-babe.trycloudflare.com/auth/callback",
+  "https://workers-highlighted-berry-babe.trycloudflare.com/auth/shopify/callback",
+  "https://workers-highlighted-berry-babe.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-10"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "quickstart-9add5583.myshopify.com"

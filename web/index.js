@@ -8,10 +8,17 @@ import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
 import GDPRWebhookHandlers from "./gdpr.js";
 
+import CoinifyRoute from './routes/CoinifyRoute.js'
+  
 const PORT = parseInt(
   process.env.BACKEND_PORT || process.env.PORT || "3000",
   10
 );
+
+console.log("-----------------------------------");
+let template = await shopify.validateAuthenticatedSession()
+console.log(template)
+console.log("-----------------------------------");
 
 const STATIC_PATH =
   process.env.NODE_ENV === "production"
@@ -69,5 +76,8 @@ app.use("/*", shopify.ensureInstalledOnShop(), async (_req, res, _next) => {
     .set("Content-Type", "text/html")
     .send(readFileSync(join(STATIC_PATH, "index.html")));
 });
+
+// Coinify data
+app.use("/api/coinifyConfig", CoinifyRoute);
 
 app.listen(PORT);

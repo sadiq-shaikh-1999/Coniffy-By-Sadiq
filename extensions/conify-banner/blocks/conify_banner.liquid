@@ -1,0 +1,36 @@
+{% if shop.metafields.coinify.config != blank %}
+ {%  assign metaValue = shop.metafields.coinify.config.value %}
+ {%  assign position = metaValue["position"] %}
+ {%  assign earn_point = metaValue["earn"] %}
+ {%  assign burn_point = metaValue["burn"]  %}
+{% endif %}
+<div class="full-width {{ position }} {{ earn_point }} {{ burn_point }} and" style="background:{{ block.settings.colour }};">
+  <span>
+    <span style="color:#fff">{% if block.settings.shop_name != blank %}{{ block.settings.shop_name }}{% else %}{{ shop.name }}{% endif %} Rewards  | {{ block.settings.discount_message }} </span>
+  </span> 
+</div>
+<style>
+  .full-width {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    right: 0;
+    z-index: 9999;
+    height: 30px;
+  }
+  .full-width.top {
+    top: 0;
+  }
+</style>
+{% schema %}
+{
+  "name": "Coinify Banner",
+  "target": "body",
+  "settings": [
+    { "type": "text", "id": "shop_name", "label": "Shop Name" },
+    { "type": "text", "id": "discount_message", "label": "Discount Message" },
+    { "type": "color", "id": "colour", "label": "Star Color", "default": "#ff0000" }
+  ]
+} 
+{% endschema %} 
+

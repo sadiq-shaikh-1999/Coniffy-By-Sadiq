@@ -1,0 +1,24 @@
+{% if  template.name == 'product' %}
+    <div class="pdp_poit--earn">
+        <div class="pop_text" style="display: flex; align-items:center;">Earn {{ 'coin-flat.png' | asset_url | img_tag }} {{ product.price  |  divided_by: 100 |  times: 0.05 |  round }} Points on this Product</div>
+    </div>
+{% endif %}
+{% if template.name == 'cart' %} 
+    <div  class="pop_coins" style="display: flex; justify-content:center;"></div>
+        <input type="checkbox"  name="popcoins" value="1" style="display: inline-block;">
+        <label for="popcoins">RS 200 | Saved using POPcoins</label>
+    </div>
+{% endif %}
+<style>
+ .pdp_poit--earn img {
+    width: 20px;
+  }
+</style>
+{% schema %}
+{
+    "name": "Coinify Banner",
+    "target": "section",
+    "settings": [
+    ]
+} 
+{% endschema %} 
